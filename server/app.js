@@ -32,13 +32,28 @@ const allowedOrigins = (
   .map((s) => s.trim())
   .filter(Boolean);
 
+if (
+  process.env.CLIENT_URL &&
+  !allowedOrigins.includes(process.env.CLIENT_URL)
+) {
+  allowedOrigins.push(process.env.CLIENT_URL);
+}
+
+const VERCEL_URL = "https://multi-vendor-e-commerce-platform.vercel.app";
+if (!allowedOrigins.includes(VERCEL_URL)) {
+  allowedOrigins.push(VERCEL_URL);
+}
+
+console.log("[CORS] Allowed origins:", allowedOrigins);
+
 app.use(
   cors({
     origin(origin, callback) {
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
-      return callback(new Error(`Origin ${origin} not allowed by CORS`));
+      console.warn(`[CORS] Blocked origin: ${origin}`);
+      return callback(null, false);
     },
     credentials: true,
   })
@@ -95,11 +110,17 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({
+  console.error("Unhandled error:", err.stack || err.message || err);
+
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  const status = err?.status || err?.statusCode || 500;
+
+  res.status(status).json({
     success: false,
-    message: "Internal Server Error",
-    error: process.env.NODE_ENV === "development" ? err.message : undefined,
+    message: process.env.NODE_ENV === "development" ? err.message : "Internal Server Error",
   });
 });
 
