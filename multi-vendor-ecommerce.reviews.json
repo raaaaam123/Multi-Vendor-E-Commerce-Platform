@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "6aa1093967040aa5c4817121"
+  },
+  "user": {
+    "$oid": "6aa0fcd0ca91a59a7126f5ea"
+  },
+  "product": {
+    "$oid": "6aa05323a13706878ad76819"
+  },
+  "order": {
+    "$oid": "6aa1090e67040aa5c4817111"
+  },
+  "rating": 5,
+  "comment": "best",
+  "images": [],
+  "createdAt": {
+    "$date": "2026-09-09T07:22:33.291Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:22:33.291Z"
+  },
+  "__v": 0
+}]

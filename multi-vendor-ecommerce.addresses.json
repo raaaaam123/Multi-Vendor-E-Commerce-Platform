@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "6aa05b1d90b8ee268dd837ca"
+  },
+  "user": {
+    "$oid": "6aa05b1690b8ee268dd837c8"
+  },
+  "fullName": "Flow Test",
+  "phone": "9876543210",
+  "addressLine1": "1 Test Street",
+  "addressLine2": "",
+  "city": "Chennai",
+  "state": "TN",
+  "postalCode": "600001",
+  "country": "India",
+  "isDefault": true,
+  "createdAt": {
+    "$date": "2026-09-08T18:59:41.308Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T18:59:41.308Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0f546ca91a59a7126f59f"
+  },
+  "user": {
+    "$oid": "6aa046d1b640dc3a9bff89cb"
+  },
+  "fullName": "h",
+  "phone": "8810345056",
+  "addressLine1": "hh",
+  "addressLine2": "",
+  "city": "mumbai",
+  "state": "Tehsildar",
+  "postalCode": "262802",
+  "country": "India",
+  "isDefault": true,
+  "createdAt": {
+    "$date": "2026-09-09T05:57:26.036Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:57:26.036Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa108a367040aa5c48170f6"
+  },
+  "user": {
+    "$oid": "6aa0fcd0ca91a59a7126f5ea"
+  },
+  "fullName": "j",
+  "phone": "9856044201",
+  "addressLine1": "b",
+  "addressLine2": "b",
+  "city": "b",
+  "state": "b",
+  "postalCode": "262802",
+  "country": "India",
+  "isDefault": true,
+  "createdAt": {
+    "$date": "2026-09-09T07:20:03.269Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:20:03.269Z"
+  },
+  "__v": 0
+}]

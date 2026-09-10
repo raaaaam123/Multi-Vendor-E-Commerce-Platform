@@ -1,0 +1,107 @@
+[{
+  "_id": {
+    "$oid": "6aa05323a13706878ad76819"
+  },
+  "name": "camera",
+  "description": "j",
+  "price": 4,
+  "discount": 4,
+  "sku": "4",
+  "comparePrice": 0,
+  "category": {
+    "$oid": "6aa04c4c7c28e405daf0ba6a"
+  },
+  "subcategory": null,
+  "brand": null,
+  "vendor": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "stock": 2,
+  "images": [],
+  "status": "active",
+  "featured": false,
+  "isApproved": true,
+  "rating": 0,
+  "numReviews": 0,
+  "tags": [],
+  "createdAt": {
+    "$date": "2026-09-08T18:25:39.304Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:22:33.302Z"
+  },
+  "slug": "camera",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa056ad41f0cd884937bb17"
+  },
+  "name": "ramu",
+  "description": "h",
+  "price": 45,
+  "discount": 0,
+  "sku": "",
+  "comparePrice": 4,
+  "category": {
+    "$oid": "6aa04c4c7c28e405daf0ba6a"
+  },
+  "subcategory": null,
+  "brand": null,
+  "vendor": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "stock": 0,
+  "images": [],
+  "status": "active",
+  "featured": false,
+  "isApproved": true,
+  "rating": 0,
+  "numReviews": 0,
+  "tags": [],
+  "createdAt": {
+    "$date": "2026-09-08T18:40:45.240Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:20:10.544Z"
+  },
+  "slug": "ramu",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa10b8167040aa5c48171e1"
+  },
+  "name": "book",
+  "description": "it funny ",
+  "price": 10,
+  "discount": 8,
+  "sku": "1212",
+  "comparePrice": 0,
+  "category": {
+    "$oid": "6aa04c4c7c28e405daf0ba6a"
+  },
+  "subcategory": null,
+  "brand": null,
+  "vendor": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "stock": 20,
+  "images": [
+    "http://localhost:5000/uploads/1788939137179-859495007.png"
+  ],
+  "status": "active",
+  "featured": false,
+  "isApproved": true,
+  "rating": 0,
+  "numReviews": 0,
+  "tags": [],
+  "createdAt": {
+    "$date": "2026-09-09T07:32:17.242Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:32:17.242Z"
+  },
+  "slug": "book",
+  "__v": 0
+}]

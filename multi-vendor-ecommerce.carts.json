@@ -1,0 +1,139 @@
+[{
+  "_id": {
+    "$oid": "6aa0039593445a1563fbe7b6"
+  },
+  "user": {
+    "$oid": "6aa0039193445a1563fbe7b4"
+  },
+  "items": [],
+  "couponCode": "",
+  "createdAt": {
+    "$date": "2026-09-08T12:46:13.600Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T12:46:13.600Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa046d2b640dc3a9bff89cc"
+  },
+  "user": {
+    "$oid": "6aa046d1b640dc3a9bff89cb"
+  },
+  "items": [],
+  "couponCode": "",
+  "createdAt": {
+    "$date": "2026-09-08T17:33:06.198Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:57:36.432Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6aa05b1d90b8ee268dd837c9"
+  },
+  "user": {
+    "$oid": "6aa05b1690b8ee268dd837c8"
+  },
+  "items": [],
+  "couponCode": "",
+  "createdAt": {
+    "$date": "2026-09-08T18:59:41.252Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T18:59:41.354Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6aa05b7590b8ee268dd837d4"
+  },
+  "user": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "6aa056ad41f0cd884937bb17"
+      },
+      "quantity": 1
+    },
+    {
+      "product": {
+        "$oid": "6aa05323a13706878ad76819"
+      },
+      "quantity": 4
+    }
+  ],
+  "couponCode": "",
+  "createdAt": {
+    "$date": "2026-09-08T19:01:09.666Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T06:04:23.497Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "6aa0ea4740fe477e72ec2a63"
+  },
+  "user": {
+    "$oid": "6aa0079da54c49d8a302543e"
+  },
+  "items": [],
+  "couponCode": "",
+  "createdAt": {
+    "$date": "2026-09-09T05:10:31.216Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T06:26:21.785Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "6aa0fa74ca91a59a7126f5e5"
+  },
+  "user": {
+    "$oid": "6aa0f7c6ca91a59a7126f5ce"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "6aa05323a13706878ad76819"
+      },
+      "quantity": 3
+    }
+  ],
+  "couponCode": "",
+  "createdAt": {
+    "$date": "2026-09-09T06:19:32.301Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T06:19:47.528Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6aa0fcd6ca91a59a7126f5eb"
+  },
+  "user": {
+    "$oid": "6aa0fcd0ca91a59a7126f5ea"
+  },
+  "items": [],
+  "couponCode": "",
+  "createdAt": {
+    "$date": "2026-09-09T06:29:42.035Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:21:50.474Z"
+  },
+  "__v": 3
+}]

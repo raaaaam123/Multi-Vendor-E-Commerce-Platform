@@ -1,0 +1,170 @@
+[{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba65"
+  },
+  "name": "Electronics",
+  "description": "Phones, computers, and gadgets",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.728Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.728Z"
+  },
+  "slug": "electronics",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba66"
+  },
+  "name": "Fashion",
+  "description": "Clothing, apparel, and accessories",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.743Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.743Z"
+  },
+  "slug": "fashion",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba67"
+  },
+  "name": "Home & Furniture",
+  "description": "Furniture and home decor",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.750Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.750Z"
+  },
+  "slug": "home-furniture",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba68"
+  },
+  "name": "Sports & Outdoors",
+  "description": "Sports gear and outdoor equipment",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.757Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.757Z"
+  },
+  "slug": "sports-outdoors",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba69"
+  },
+  "name": "Beauty",
+  "description": "Skincare, cosmetics, and beauty products",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.760Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.760Z"
+  },
+  "slug": "beauty",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba6a"
+  },
+  "name": "Books",
+  "description": "Books and stationery",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.763Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.763Z"
+  },
+  "slug": "books",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba6b"
+  },
+  "name": "Toys & Games",
+  "description": "Toys and games for all ages",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.765Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.765Z"
+  },
+  "slug": "toys-games",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba6c"
+  },
+  "name": "Food & Grocery",
+  "description": "Food and grocery items",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.767Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.767Z"
+  },
+  "slug": "food-grocery",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba6d"
+  },
+  "name": "Automotive",
+  "description": "Cars, parts, and auto accessories",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.770Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.770Z"
+  },
+  "slug": "automotive",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa04c4c7c28e405daf0ba6e"
+  },
+  "name": "Jewelry",
+  "description": "Jewelry and fine accessories",
+  "image": "",
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-09-08T17:56:28.773Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T17:56:28.773Z"
+  },
+  "slug": "jewelry",
+  "__v": 0
+}]

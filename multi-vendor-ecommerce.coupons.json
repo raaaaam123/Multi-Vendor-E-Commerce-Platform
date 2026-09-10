@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "6aa0fa5aca91a59a7126f5e4"
+  },
+  "code": "JKJKJ",
+  "description": "",
+  "discountType": "fixed",
+  "discountValue": 4,
+  "minPurchase": 4,
+  "maxDiscount": 4,
+  "usageLimit": 4,
+  "usedCount": 0,
+  "startDate": {
+    "$date": "2026-09-09T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2026-09-10T00:00:00.000Z"
+  },
+  "status": "active",
+  "vendor": {
+    "$oid": "6aa0f7c6ca91a59a7126f5ce"
+  },
+  "createdAt": {
+    "$date": "2026-09-09T06:19:06.586Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T06:19:06.586Z"
+  },
+  "__v": 0
+}]

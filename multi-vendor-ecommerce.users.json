@@ -1,0 +1,138 @@
+[{
+  "_id": {
+    "$oid": "6aa0079da54c49d8a302543e"
+  },
+  "email": "admin@shopverse.com",
+  "__v": 0,
+  "approvalStatus": "approved",
+  "avatar": "",
+  "businessAddress": "",
+  "businessDescription": "",
+  "businessName": "",
+  "createdAt": {
+    "$date": "2026-09-08T13:03:25.502Z"
+  },
+  "name": "Admin",
+  "password": "$2b$10$oOgdL.eAxCx3hxsZBUwfLuugM7/YRFrHbB2d7mX8fbqKuFtV51THS",
+  "phone": "",
+  "role": "admin",
+  "status": "active",
+  "updatedAt": {
+    "$date": "2026-09-08T13:15:38.042Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "name": "nihal",
+  "email": "nihal@gmail.com",
+  "password": "$2b$10$mWhASNQVoZFX4mUMM3Wb2uNa6quUCYmKkO3L7L9ee482pQUgIaDUO",
+  "phone": "",
+  "role": "vendor",
+  "avatar": "",
+  "status": "active",
+  "businessName": "j",
+  "businessAddress": "n",
+  "businessDescription": "j",
+  "approvalStatus": "approved",
+  "createdAt": {
+    "$date": "2026-09-08T16:30:31.050Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T18:10:38.898Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa046d1b640dc3a9bff89cb"
+  },
+  "name": "raam",
+  "email": "geetadevi.it@gmail.com",
+  "password": "$2b$10$bG7aVaIlH8kIRuWLpCuFIOgsmpHrF54Oeo9TD5O3XIh/LLu9KHL02",
+  "phone": "",
+  "role": "customer",
+  "avatar": "",
+  "status": "active",
+  "businessName": "",
+  "businessAddress": "",
+  "businessDescription": "",
+  "approvalStatus": "approved",
+  "createdAt": {
+    "$date": "2026-09-08T17:33:05.258Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:54:32.828Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa05b1690b8ee268dd837c8"
+  },
+  "name": "Flow Test",
+  "email": "flowtest_1788893974849@example.com",
+  "password": "$2b$10$5aZXg0JB2M6KyEVRZkqKdOqfBF9otMHnoU3ddlbOI9K/p4FO.sTOO",
+  "phone": "",
+  "role": "customer",
+  "avatar": "",
+  "status": "active",
+  "businessName": "",
+  "businessAddress": "",
+  "businessDescription": "",
+  "approvalStatus": "approved",
+  "createdAt": {
+    "$date": "2026-09-08T18:59:34.938Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T18:59:34.938Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0f7c6ca91a59a7126f5ce"
+  },
+  "name": "ramu",
+  "email": "ramu@gmail.com",
+  "password": "$2b$10$faO86EwsvHBD/O1Abrql.eCfWRNEwSat/kFIlf8brOGYEhYIQpgz6",
+  "phone": "",
+  "role": "vendor",
+  "avatar": "",
+  "status": "active",
+  "businessName": "n",
+  "businessAddress": "n",
+  "businessDescription": "n",
+  "approvalStatus": "approved",
+  "createdAt": {
+    "$date": "2026-09-09T06:08:06.444Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T06:09:55.184Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0fcd0ca91a59a7126f5ea"
+  },
+  "name": "shivam",
+  "email": "collegeuse.it@gmail.com",
+  "password": "$2b$10$5t2kmFo31HXrsFtHQwtQf.2E8aEqv2zfvINH8TZs6yzr6wpoJWZn6",
+  "phone": "",
+  "role": "customer",
+  "avatar": "",
+  "status": "active",
+  "businessName": "",
+  "businessAddress": "",
+  "businessDescription": "",
+  "approvalStatus": "approved",
+  "createdAt": {
+    "$date": "2026-09-09T06:29:36.877Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T06:29:36.877Z"
+  },
+  "__v": 0
+}]

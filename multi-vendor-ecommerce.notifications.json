@@ -1,0 +1,480 @@
+[{
+  "_id": {
+    "$oid": "6aa04fa4fcc745c2bb3d120f"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "vendor_approved",
+  "title": "Vendor Account Approved",
+  "message": "Congratulations! Your vendor account for j has been approved. You can now start selling on ShopVerse.",
+  "link": "/vendor/dashboard",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-08T18:10:44.455Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T18:10:44.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa05b1d90b8ee268dd837cd"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "new_order",
+  "title": "New Order Received",
+  "message": "You have a new order for \"ramu\".",
+  "link": "/vendor/orders",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-08T18:59:41.350Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T18:59:41.350Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa05b1d90b8ee268dd837ce"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "low_stock",
+  "title": "Low Stock Alert",
+  "message": "\"ramu\" is running low with only 2 units left in stock.",
+  "link": "/vendor/products",
+  "isRead": true,
+  "createdAt": {
+    "$date": "2026-09-08T18:59:41.352Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:24:37.916Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa05b2290b8ee268dd837d0"
+  },
+  "recipient": {
+    "$oid": "6aa05b1690b8ee268dd837c8"
+  },
+  "type": "order_placed",
+  "title": "Order Placed Successfully",
+  "message": "Your order #SW26090818311000 has been placed and is now being processed.",
+  "link": "/account/orders/6aa05b1d90b8ee268dd837cb",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-08T18:59:46.819Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-08T18:59:46.819Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0edba40fe477e72ec2a6c"
+  },
+  "recipient": {
+    "$oid": "6aa05b1690b8ee268dd837c8"
+  },
+  "type": "order_shipped",
+  "title": "Order Shipped",
+  "message": "Your order #SW26090818311000 item \"ramu\" has been shipped and is on its way.",
+  "link": "/account/orders/6aa05b1d90b8ee268dd837cb",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T05:25:14.373Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:25:14.373Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0edbf40fe477e72ec2a6e"
+  },
+  "recipient": {
+    "$oid": "6aa05b1690b8ee268dd837c8"
+  },
+  "type": "order_shipped",
+  "title": "Order Shipped",
+  "message": "Your order #SW26090818311000 item \"ramu\" has been shipped and is on its way.",
+  "link": "/account/orders/6aa05b1d90b8ee268dd837cb",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T05:25:19.670Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:25:19.670Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0edc640fe477e72ec2a70"
+  },
+  "recipient": {
+    "$oid": "6aa05b1690b8ee268dd837c8"
+  },
+  "type": "order_delivered",
+  "title": "Order Delivered",
+  "message": "Your order #SW26090818311000 has been delivered. Enjoy your purchase!",
+  "link": "/account/orders/6aa05b1d90b8ee268dd837cb",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T05:25:26.255Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:25:26.255Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0eddc40fe477e72ec2a74"
+  },
+  "recipient": {
+    "$oid": "6aa05b1690b8ee268dd837c8"
+  },
+  "type": "order_shipped",
+  "title": "Order Shipped",
+  "message": "Your order #SW26090818311000 item \"ramu\" has been shipped and is on its way.",
+  "link": "/account/orders/6aa05b1d90b8ee268dd837cb",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T05:25:48.354Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:25:48.354Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0f550ca91a59a7126f5a2"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "new_order",
+  "title": "New Order Received",
+  "message": "You have a new order for \"ramu\".",
+  "link": "/vendor/orders",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T05:57:36.427Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:57:36.427Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0f550ca91a59a7126f5a3"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "low_stock",
+  "title": "Low Stock Alert",
+  "message": "\"ramu\" is running low with only 1 unit left in stock.",
+  "link": "/vendor/products",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T05:57:36.430Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:57:36.430Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0f555ca91a59a7126f5a5"
+  },
+  "recipient": {
+    "$oid": "6aa046d1b640dc3a9bff89cb"
+  },
+  "type": "order_placed",
+  "title": "Order Placed Successfully",
+  "message": "Your order #SW26090916161000 has been placed and is now being processed.",
+  "link": "/account/orders/6aa0f550ca91a59a7126f5a0",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T05:57:41.103Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:57:41.103Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0f5ccca91a59a7126f5bd"
+  },
+  "recipient": {
+    "$oid": "6aa046d1b640dc3a9bff89cb"
+  },
+  "type": "order_shipped",
+  "title": "Order Shipped",
+  "message": "Your order #SW26090916161000 item \"ramu\" has been shipped and is on its way.",
+  "link": "/account/orders/6aa0f550ca91a59a7126f5a0",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T05:59:40.818Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T05:59:40.818Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa0f81fca91a59a7126f5d3"
+  },
+  "recipient": {
+    "$oid": "6aa0f7c6ca91a59a7126f5ce"
+  },
+  "type": "vendor_approved",
+  "title": "Vendor Account Approved",
+  "message": "Congratulations! Your vendor account for n has been approved. You can now start selling on ShopVerse.",
+  "link": "/vendor/dashboard",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T06:09:35.963Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T06:09:35.963Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa108aa67040aa5c48170fa"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "new_order",
+  "title": "New Order Received",
+  "message": "You have a new order for \"ramu\".",
+  "link": "/vendor/orders",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:20:10.553Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:20:10.553Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa108aa67040aa5c48170fb"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "low_stock",
+  "title": "Low Stock Alert",
+  "message": "\"ramu\" is running low with only 0 units left in stock.",
+  "link": "/vendor/products",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:20:10.558Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:20:10.558Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa108aa67040aa5c48170fc"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "new_order",
+  "title": "New Order Received",
+  "message": "You have a new order for \"camera\".",
+  "link": "/vendor/orders",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:20:10.568Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:20:10.568Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa108aa67040aa5c48170fd"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "low_stock",
+  "title": "Low Stock Alert",
+  "message": "\"camera\" is running low with only 3 units left in stock.",
+  "link": "/vendor/products",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:20:10.573Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:20:10.573Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa108b067040aa5c4817100"
+  },
+  "recipient": {
+    "$oid": "6aa0fcd0ca91a59a7126f5ea"
+  },
+  "type": "order_placed",
+  "title": "Order Placed Successfully",
+  "message": "Your order #SW26090947031000 has been placed and is now being processed.",
+  "link": "/account/orders/6aa108aa67040aa5c48170f7",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:20:16.219Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:20:16.219Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa1090e67040aa5c4817113"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "new_order",
+  "title": "New Order Received",
+  "message": "You have a new order for \"camera\".",
+  "link": "/vendor/orders",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:21:50.465Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:21:50.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa1090e67040aa5c4817114"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "low_stock",
+  "title": "Low Stock Alert",
+  "message": "\"camera\" is running low with only 2 units left in stock.",
+  "link": "/vendor/products",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:21:50.470Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:21:50.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa1091267040aa5c4817116"
+  },
+  "recipient": {
+    "$oid": "6aa0fcd0ca91a59a7126f5ea"
+  },
+  "type": "order_placed",
+  "title": "Order Placed Successfully",
+  "message": "Your order #SW26090947931000 has been placed and is now being processed.",
+  "link": "/account/orders/6aa1090e67040aa5c4817111",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:21:54.677Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:21:54.677Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa1093967040aa5c4817122"
+  },
+  "recipient": {
+    "$oid": "6aa038273dc921b70cefea03"
+  },
+  "type": "new_review",
+  "title": "New Review Received",
+  "message": "Your product \"camera\" received a 5-star review.",
+  "link": "/vendor/products",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:22:33.307Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:22:33.307Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa109d467040aa5c481714f"
+  },
+  "recipient": {
+    "$oid": "6aa0fcd0ca91a59a7126f5ea"
+  },
+  "type": "order_delivered",
+  "title": "Order Delivered",
+  "message": "Your order #SW26090947031000 has been delivered. Enjoy your purchase!",
+  "link": "/account/orders/6aa108aa67040aa5c48170f7",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:25:08.083Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:25:08.083Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6aa109d767040aa5c4817151"
+  },
+  "recipient": {
+    "$oid": "6aa0fcd0ca91a59a7126f5ea"
+  },
+  "type": "order_delivered",
+  "title": "Order Delivered",
+  "message": "Your order #SW26090947931000 has been delivered. Enjoy your purchase!",
+  "link": "/account/orders/6aa1090e67040aa5c4817111",
+  "isRead": false,
+  "createdAt": {
+    "$date": "2026-09-09T07:25:11.900Z"
+  },
+  "updatedAt": {
+    "$date": "2026-09-09T07:25:11.900Z"
+  },
+  "__v": 0
+}]
