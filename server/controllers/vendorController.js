@@ -6,6 +6,7 @@ import Coupon from "../models/Coupon.js";
 import {
   uploadImagesToCloudinary,
 } from "../services/cloudinaryService.js";
+import { getUploadedFileUrl } from "../middleware/uploadMiddleware.js";
 import { notifyUser } from "../utils/notify.js";
 
 const checkVendorApproved = (req, res) => {
@@ -274,10 +275,7 @@ const createProduct = async (req, res) => {
       if (usedCloudinary) {
         images = urls;
       } else {
-        const base =
-          process.env.SERVER_URL ||
-          `http://localhost:${process.env.PORT || 5000}`;
-        images = req.files.map((f) => `${base}/uploads/${f.filename}`);
+        images = req.files.map((f) => getUploadedFileUrl(req, f));
       }
     }
 
@@ -385,10 +383,7 @@ const updateProduct = async (req, res) => {
       if (usedCloudinary) {
         newImages = urls;
       } else {
-        const base =
-          process.env.SERVER_URL ||
-          `http://localhost:${process.env.PORT || 5000}`;
-        newImages = req.files.map((f) => `${base}/uploads/${f.filename}`);
+        newImages = req.files.map((f) => getUploadedFileUrl(req, f));
       }
       product.images = [...product.images, ...newImages];
     }

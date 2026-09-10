@@ -8,13 +8,15 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "seed:admin": "node utils/createAdmin.js",
-    "seed:categories": "node utils/seedCategories.js"
+    "seed:categories": "node utils/seedCategories.js",
+    "migrate:images": "node utils/migrateImageUrls.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cloudinary": "^2.11.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",

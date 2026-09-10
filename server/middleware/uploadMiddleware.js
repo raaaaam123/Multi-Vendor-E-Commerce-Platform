@@ -40,10 +40,13 @@ const upload = multer({
 
 export const uploadProductImages = upload.array("images", 8);
 
+export const getUploadBaseUrl = (req) =>
+  process.env.SERVER_URL ||
+  (req ? `${req.protocol}://${req.get("host")}` : "") ||
+  `http://localhost:${process.env.PORT || 5000}`;
+
 export const getUploadedFileUrl = (req, file) => {
-  const base =
-    process.env.SERVER_URL ||
-    `http://localhost:${process.env.PORT || 5000}`;
+  const base = getUploadBaseUrl(req);
   return `${base}/uploads/${file.filename}`;
 };
 
