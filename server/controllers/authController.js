@@ -119,21 +119,19 @@ const register = async (req, res) => {
 
     setTokenCookies(res, accessToken, refreshToken);
 
-    try {
-      await sendEmail({
-        to: user.email,
-        subject:
-          userRole === "vendor"
-            ? "Vendor Registration Received"
-            : "Welcome to ShopVerse!",
-        html: registrationEmail({
-          name: user.name,
-          role: user.role,
-        }),
-      });
-    } catch (emailError) {
+    sendEmail({
+      to: user.email,
+      subject:
+        userRole === "vendor"
+          ? "Vendor Registration Received"
+          : "Welcome to ShopVerse!",
+      html: registrationEmail({
+        name: user.name,
+        role: user.role,
+      }),
+    }).catch((emailError) => {
       console.error("Registration email failed:", emailError.message);
-    }
+    });
 
     return res.status(201).json({
       success: true,
@@ -170,7 +168,24 @@ const login = async (req, res) => {
       });
     }
 
-    const isPasswordValid = await user.matchPassword(password);
+    if (!user.password) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password",
+      });
+    }
+
+    let isPasswordValid = false;
+    try {
+      isPasswordValid = await user.matchPassword(password);
+    } catch (compareError) {
+      console.error("Password compare error:", compareError.message);
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password",
+      });
+    }
+
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
