@@ -7,6 +7,15 @@ import { sendEmail } from "../utils/email.js";
 import { registrationEmail, passwordResetEmail } from "../utils/emailTemplates.js";
 import jwt from "jsonwebtoken";
 
+const getFrontendBaseUrl = () => {
+  const clientUrl = (process.env.CLIENT_URL || process.env.FRONTEND_URL || "").trim();
+  if (clientUrl) return clientUrl.replace(/\/+$/, "");
+  if (process.env.NODE_ENV === "production") {
+    return "https://multi-vendor-e-commerce-platform.vercel.app";
+  }
+  return "http://localhost:5173";
+};
+
 const setTokenCookies = (res, accessToken, refreshToken) => {
   const isProduction = process.env.NODE_ENV === "production";
 
@@ -262,7 +271,7 @@ const forgotPassword = async (req, res) => {
       { expiresIn: "15m" }
     );
 
-    const resetUrl = `${process.env.CLIENT_URL || "http://localhost:5173"}/reset-password?token=${resetToken}`;
+    const resetUrl = `${getFrontendBaseUrl()}/reset-password?token=${resetToken}`;
 
     try {
       await sendEmail({
@@ -274,7 +283,10 @@ const forgotPassword = async (req, res) => {
         }),
       });
     } catch (emailError) {
-      console.error("Password reset email failed:", emailError.message);
+      console.error(
+        "[FORGOT-PASSWORD] Email send failed:",
+        emailError?.stack || emailError?.message || emailError
+      );
       return res.status(500).json({
         success: false,
         message: "Failed to send password reset email. Please try again.",

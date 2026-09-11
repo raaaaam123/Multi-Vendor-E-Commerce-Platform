@@ -19,6 +19,17 @@ const transporter = isSmtpConfigured
     })
   : null;
 
+if (
+  isSmtpConfigured &&
+  (!process.env.SMTP_PASSWORD ||
+    process.env.SMTP_PASSWORD.includes("your_") ||
+    process.env.SMTP_PASSWORD.includes("password"))
+) {
+  console.warn(
+    "[EMAIL] SMTP_USER is set but SMTP_PASSWORD is missing or looks like a placeholder. Email sending will fail until a valid password/app-password is configured."
+  );
+}
+
 const EMAIL_FROM = process.env.EMAIL_FROM || "ShopVerse <no-reply@shopverse.com>";
 
 const sendEmail = async ({ to, subject, html, text = "" }) => {
@@ -45,7 +56,12 @@ const sendEmail = async ({ to, subject, html, text = "" }) => {
     );
     return info;
   } catch (error) {
-    console.error("[EMAIL] Failed to send email:", error);
+    console.error("[EMAIL] Failed to send email:", {
+      code: error?.code,
+      responseCode: error?.responseCode,
+      response: error?.response,
+      message: error?.message,
+    });
     throw error;
   }
 };

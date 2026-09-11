@@ -40,10 +40,14 @@ const upload = multer({
 
 export const uploadProductImages = upload.array("images", 8);
 
-export const getUploadBaseUrl = (req) =>
-  process.env.SERVER_URL ||
-  (req ? `${req.protocol}://${req.get("host")}` : "") ||
-  `http://localhost:${process.env.PORT || 5000}`;
+export const getUploadBaseUrl = (req) => {
+  if (process.env.SERVER_URL) return process.env.SERVER_URL;
+  if (req) return `${req.protocol}://${req.get("host")}`;
+  if (process.env.NODE_ENV === "production") {
+    return "https://multi-vendor-e-commerce-platform-u19r.onrender.com";
+  }
+  return `http://localhost:${process.env.PORT || 5000}`;
+};
 
 export const getUploadedFileUrl = (req, file) => {
   const base = getUploadBaseUrl(req);
