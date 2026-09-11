@@ -9,6 +9,32 @@ import {
 import { getUploadedFileUrl } from "../middleware/uploadMiddleware.js";
 import { notifyUser } from "../utils/notify.js";
 
+const sendProductError = (res, error, logPrefix, fallback) => {
+  if (error.name === "ValidationError") {
+    const details = Object.values(error.errors)
+      .map((e) => e.message)
+      .join(", ");
+    return res.status(400).json({ success: false, message: details });
+  }
+
+  if (error.code === 11000) {
+    return res.status(409).json({
+      success: false,
+      message:
+        "A product with this name already exists. Please use a different name.",
+    });
+  }
+
+  console.error(logPrefix, error);
+  return res.status(500).json({
+    success: false,
+    message:
+      process.env.NODE_ENV === "development"
+        ? `${fallback}: ${error.message}`
+        : fallback,
+  });
+};
+
 const checkVendorApproved = (req, res) => {
   if (req.user.approvalStatus !== "approved") {
     return res.status(403).json({
@@ -309,11 +335,12 @@ const createProduct = async (req, res) => {
       product: populated,
     });
   } catch (error) {
-    console.error("Vendor create product error:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Failed to create product",
-    });
+    return sendProductError(
+      res,
+      error,
+      "Vendor create product error:",
+      "Failed to create product"
+    );
   }
 };
 
@@ -401,11 +428,12 @@ const updateProduct = async (req, res) => {
       product: populated,
     });
   } catch (error) {
-    console.error("Vendor update product error:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Failed to update product",
-    });
+    return sendProductError(
+      res,
+      error,
+      "Vendor update product error:",
+      "Failed to update product"
+    );
   }
 };
 

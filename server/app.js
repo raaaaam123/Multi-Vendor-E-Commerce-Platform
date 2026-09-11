@@ -118,6 +118,23 @@ app.use((err, req, res, next) => {
     return next(err);
   }
 
+  if (err?.name === "MulterError") {
+    const isTooLarge = err.code === "LIMIT_FILE_SIZE";
+    return res.status(isTooLarge ? 413 : 400).json({
+      success: false,
+      message: isTooLarge
+        ? "File too large. Maximum image size is 5MB."
+        : `Image upload error: ${err.code}`,
+    });
+  }
+
+  if (err?.message === "Only image files are allowed") {
+    return res.status(400).json({
+      success: false,
+      message: "Only image files are allowed",
+    });
+  }
+
   const status = err?.status || err?.statusCode || 500;
 
   res.status(status).json({
