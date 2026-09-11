@@ -6,15 +6,19 @@ const EMAIL_PROVIDER = (process.env.EMAIL_PROVIDER || "brevo")
 const EMAIL_FROM = process.env.EMAIL_FROM || "ShopVerse <no-reply@shopverse.com>";
 const API_TIMEOUT_MS = 15000;
 
+const PLACEHOLDER_PATTERNS = ["your_", "xxx", "changeme", "example", "test_"];
+
+const isPlaceholder = (value) =>
+  !value || PLACEHOLDER_PATTERNS.some((p) => value.toLowerCase().includes(p));
+
 const isSmtpConfigured =
   process.env.SMTP_USER &&
-  !process.env.SMTP_USER.includes("your_email") &&
+  !isPlaceholder(process.env.SMTP_USER) &&
   process.env.SMTP_PASSWORD &&
-  !process.env.SMTP_PASSWORD.includes("your_");
+  !isPlaceholder(process.env.SMTP_PASSWORD);
 
 const hasApiKey =
-  process.env.EMAIL_API_KEY &&
-  !process.env.EMAIL_API_KEY.includes("your_");
+  process.env.EMAIL_API_KEY && !isPlaceholder(process.env.EMAIL_API_KEY);
 
 const parseSender = (from) => {
   const match = /^(.*?)\s*<([^<>]+)>$/.exec((from || "").trim());

@@ -7,6 +7,10 @@ import { sendEmail } from "../utils/email.js";
 import { registrationEmail, passwordResetEmail } from "../utils/emailTemplates.js";
 import jwt from "jsonwebtoken";
 
+const PLACEHOLDER_PATTERNS = ["your_", "xxx", "changeme", "example", "test_"];
+const isPlaceholder = (value) =>
+  !value || PLACEHOLDER_PATTERNS.some((p) => value.toLowerCase().includes(p));
+
 const getFrontendBaseUrl = () => {
   const clientUrl = (process.env.CLIENT_URL || process.env.FRONTEND_URL || "").trim();
   if (clientUrl) return clientUrl.replace(/\/+$/, "");
@@ -262,6 +266,14 @@ const forgotPassword = async (req, res) => {
       return res.status(404).json({
         success: false,
         message: "No account found with this email",
+      });
+    }
+
+    if (!process.env.JWT_SECRET || isPlaceholder(process.env.JWT_SECRET)) {
+      console.error("[FORGOT-PASSWORD] JWT_SECRET is missing or still a placeholder");
+      return res.status(500).json({
+        success: false,
+        message: "Server configuration error. Please contact support.",
       });
     }
 
