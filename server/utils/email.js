@@ -1,139 +1,145 @@
 import nodemailer from "nodemailer";
-import { lookup } from "node:dns/promises";
+
+const EMAIL_PROVIDER = (process.env.EMAIL_PROVIDER || "brevo")
+  .trim()
+  .toLowerCase();
+const EMAIL_FROM = process.env.EMAIL_FROM || "ShopVerse <no-reply@shopverse.com>";
+const API_TIMEOUT_MS = 15000;
 
 const isSmtpConfigured =
   process.env.SMTP_USER &&
-  !process.env.SMTP_USER.includes("your_email");
+  !process.env.SMTP_USER.includes("your_email") &&
+  process.env.SMTP_PASSWORD &&
+  !process.env.SMTP_PASSWORD.includes("your_");
 
-const SMTP_HOST = process.env.SMTP_HOST || "smtp.gmail.com";
-const SMTP_PORT = Number(process.env.SMTP_PORT) || 587;
-const EMAIL_FROM = process.env.EMAIL_FROM || "ShopVerse <no-reply@shopverse.com>";
+const hasApiKey =
+  process.env.EMAIL_API_KEY &&
+  !process.env.EMAIL_API_KEY.includes("your_");
 
-const CONNECT_ERROR_CODES = new Set([
-  "ENETUNREACH",
-  "EHOSTUNREACH",
-  "ETIMEDOUT",
-  "ECONNREFUSED",
-  "ECONNRESET",
-  "EAI_AGAIN",
-  "ESOCKETTIMEDOUT",
-]);
-
-const isConnectLevelError = (err) => {
-  if (!err) return false;
-  if (CONNECT_ERROR_CODES.has(err?.code)) return true;
-  return /timeout|timed out|greeting|unreachable|connection (reset|refused)|cannot.*reach/i.test(
-    err?.message || ""
-  );
+const parseSender = (from) => {
+  const match = /^(.*?)\s*<([^<>]+)>$/.exec((from || "").trim());
+  if (match && match[2]) {
+    return { name: (match[1] || "ShopVerse").trim(), email: match[2].trim() };
+  }
+  return { name: "ShopVerse", email: (from || "").trim() };
 };
 
-const toIpv4 = async (host) => {
-  if (!host) return null;
-  try {
-    const addrs = await lookup(host, { all: true, family: 4 });
-    const ip = addrs.find((a) => a.family === 4);
-    if (ip) {
-      console.log(`[EMAIL] Resolved ${host} -> ${ip.address} (IPv4)`);
-      return ip.address;
-    }
-  } catch (error) {
-    console.warn(`[EMAIL] IPv4 lookup failed for ${host}: ${error?.message}`);
-  }
-  return null;
-};
-
-let SMTP_IPV4 = null;
-
-if (isSmtpConfigured) {
-  if (
-    !process.env.SMTP_PASSWORD ||
-    process.env.SMTP_PASSWORD.includes("your_") ||
-    process.env.SMTP_PASSWORD.includes("password")
-  ) {
-    console.warn(
-      "[EMAIL] SMTP_USER is set but SMTP_PASSWORD is missing or looks like a placeholder. Email sending will fail until a valid password/app-password is configured."
-    );
-  }
-
-  SMTP_IPV4 = await toIpv4(SMTP_HOST);
-  console.log(
-    `[EMAIL] SMTP host ${SMTP_HOST}:${SMTP_PORT}${SMTP_IPV4 ? ` -> ${SMTP_IPV4} (IPv4 preferred)` : " (hostname)"}`
+if (hasApiKey && EMAIL_PROVIDER !== "brevo") {
+  console.warn(
+    `[EMAIL] EMAIL_PROVIDER="${EMAIL_PROVIDER}" is set, but only "brevo" is supported. Using Brevo.`
   );
 }
 
-const buildTransporter = (port) =>
+const sendViaBrevo = async ({ to, subject, html, text }) => {
+  const sender = parseSender(EMAIL_FROM);
+
+  let response;
+  try {
+    response = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: {
+        "api-key": process.env.EMAIL_API_KEY,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        sender,
+        to: [{ email: to }],
+        subject,
+        htmlContent: html,
+        ...(text ? { textContent: text } : {}),
+      }),
+      signal: AbortSignal.timeout(API_TIMEOUT_MS),
+    });
+  } catch (networkError) {
+    console.error(
+      "[EMAIL] Email API request failed (Brevo):",
+      networkError?.name === "TimeoutError"
+        ? `request timed out after ${API_TIMEOUT_MS}ms`
+        : networkError?.message || "network error"
+    );
+    throw new Error("Failed to reach email provider");
+  }
+
+  if (!response.ok) {
+    let errorDetail = `HTTP ${response.status}`;
+    try {
+      const body = await response.text();
+      const excerpt = body.slice(0, 500);
+      errorDetail += excerpt ? `: ${excerpt}` : "";
+    } catch (parseError) {
+      errorDetail += ` (could not read response body: ${parseError?.message})`;
+    }
+    console.error("[EMAIL] Email API request failed (Brevo):", errorDetail);
+    throw new Error("Failed to send email via email provider");
+  }
+
+  const data = await response.json().catch(() => ({}));
+  const messageId = data?.messageId || data?.id || null;
+  console.log(
+    `[EMAIL] Sent "${subject}" to ${to} via Brevo${messageId ? ` (messageId: ${messageId})` : ""}`
+  );
+  return { messageId };
+};
+
+const buildTransporter = () =>
   nodemailer.createTransport({
-    host: SMTP_IPV4 || SMTP_HOST,
-    port,
-    secure: port === 465,
-    requireTLS: true,
-    connectionTimeout: 6000,
-    greetingTimeout: 8000,
-    socketTimeout: 15000,
+    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    port: Number(process.env.SMTP_PORT) || 587,
+    secure: Number(process.env.SMTP_PORT) === 465,
+    requireTLS: Number(process.env.SMTP_PORT) !== 465,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASSWORD,
     },
-    ...(SMTP_IPV4 ? { tls: { servername: SMTP_HOST } } : {}),
   });
 
-const logSendFailure = (stage, port, error) => {
-  console.error(`[EMAIL] ${stage} SMTP attempt failed (port ${port}):`, {
-    code: error?.code,
-    command: error?.command,
-    responseCode: error?.responseCode,
-    response: error?.response,
-    message: error?.message,
-  });
-};
-
-const sendEmail = async ({ to, subject, html, text = "" }) => {
-  if (!isSmtpConfigured) {
-    console.warn("[EMAIL] SMTP not configured — logging email instead of sending.");
-    console.log("──────────────────────────────────────────");
-    console.log(`[EMAIL DEV] To:      ${to}`);
-    console.log(`[EMAIL DEV] Subject: ${subject}`);
-    console.log(`[EMAIL DEV] Body:\n${text || html}`);
-    console.log("──────────────────────────────────────────");
-    return { messageId: "dev-mode-no-email-sent" };
-  }
-
-  const primaryPort = SMTP_PORT;
-  const fallbackPort = primaryPort === 465 ? null : 465;
-
-  const attempt = (port) =>
-    buildTransporter(port).sendMail({
+const sendViaSmtp = async ({ to, subject, html, text }) => {
+  try {
+    const transporter = buildTransporter();
+    const info = await transporter.sendMail({
       from: EMAIL_FROM,
       to,
       subject,
       html,
       text: text || "Please view this email in an HTML-capable client.",
     });
-
-  try {
-    const info = await attempt(primaryPort);
     console.log(
-      `[EMAIL] Sent "${subject}" to ${to} (messageId: ${info.messageId})`
+      `[EMAIL] Sent "${subject}" to ${to} via SMTP (messageId: ${info.messageId})`
     );
     return info;
-  } catch (primaryError) {
-    logSendFailure("Primary", primaryPort, primaryError);
-
-    if (fallbackPort && isConnectLevelError(primaryError)) {
-      try {
-        const info = await attempt(fallbackPort);
-        console.log(
-          `[EMAIL] Sent "${subject}" to ${to} via fallback SMTP port ${fallbackPort} (messageId: ${info.messageId})`
-        );
-        return info;
-      } catch (fallbackError) {
-        logSendFailure("Fallback", fallbackPort, fallbackError);
-        throw fallbackError;
-      }
-    }
-
-    throw primaryError;
+  } catch (error) {
+    console.error("[EMAIL] SMTP send failed:", {
+      code: error?.code,
+      command: error?.command,
+      responseCode: error?.responseCode,
+      response: error?.response,
+      message: error?.message,
+    });
+    throw error;
   }
+};
+
+const logEmailToConsole = ({ to, subject, html, text }) => {
+  console.warn("[EMAIL] No email provider configured — logging email instead of sending.");
+  console.log("──────────────────────────────────────────");
+  console.log(`[EMAIL DEV] To:      ${to}`);
+  console.log(`[EMAIL DEV] Subject: ${subject}`);
+  console.log(`[EMAIL DEV] Body:\n${text || html}`);
+  console.log("──────────────────────────────────────────");
+};
+
+const sendEmail = async ({ to, subject, html, text = "" }) => {
+  if (hasApiKey) {
+    return sendViaBrevo({ to, subject, html, text });
+  }
+
+  if (isSmtpConfigured) {
+    return sendViaSmtp({ to, subject, html, text });
+  }
+
+  logEmailToConsole({ to, subject, html, text });
+  return { messageId: "dev-mode-no-email-sent" };
 };
 
 export { sendEmail };
